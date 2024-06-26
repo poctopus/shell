@@ -24,7 +24,7 @@ tar -zxvf $gost_version_linux_amd64.tar.gz
 mv gost /bin/
 
 # 清理下载的文件
-rm -f $gost_version_linux_amd64.tar.gz
+rm -f -r /app/gost
 
 # 赋予 gost 可执行权限
 chmod +x /bin/gost
