@@ -28,7 +28,7 @@ tar -zxvf $filename
 mv gost /bin/
 
 # 清理下载的文件
-rm -f $filename
+rm -f -r /app/gost/
 
 # 赋予 gost 可执行权限
 chmod +x /bin/gost
