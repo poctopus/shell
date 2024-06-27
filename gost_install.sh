@@ -1,12 +1,13 @@
 #!/bin/bash
 
 # 提示输入变量值
-read -p "请输入 gost 版本号 (如: v2.11.1): " gost_version
+read -p "请输入 gost 版本号 (如: v2.11.1 或 v3.0.0-nightly.20240625): " gost_version
 read -p "请输入 upport (如: 8080): " upport
 read -p "请输入 localport (如: 1080): " localport
 
 # 提取文件名
-filename=$(echo $gost_version | sed 's/\//-/g')_linux_amd64.tar.gz
+filename=$(echo $gost_version | sed 's/^v//')_linux_amd64.tar.gz
+filename="gost_$filename"
 
 # 切换到根目录
 cd /
@@ -21,13 +22,13 @@ cd /app/gost/
 wget https://github.com/go-gost/gost/releases/download/$gost_version/$filename
 
 # 解压下载的文件
-tar -zxvf $gost_version_linux_amd64.tar.gz
+tar -zxvf $filename
 
 # 移动 gost 可执行文件到 /bin 目录
 mv gost /bin/
 
 # 清理下载的文件
-rm -f -r /app/gost
+rm -f $filename
 
 # 赋予 gost 可执行权限
 chmod +x /bin/gost
