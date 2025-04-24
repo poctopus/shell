@@ -24,9 +24,9 @@ function stop_service() {
 # Function to start ocserv service
 function start_service() {
     if [ "$system_str" = "0" ]; then
-        service ocserv start
+        service ocserv restart
     else
-        systemctl start ocserv
+        systemctl restart ocserv
     fi
 }
 
